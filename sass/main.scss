@@ -1,0 +1,121 @@
+@import './_variables';
+
+@import './_reset';
+
+/* CREATING THE MAIN HEADER CONTAINER */
+.container {
+  width: 100%;
+  height: 100vh;
+  background-image: url('https://images.pexels.com/photos/4226883/pexels-photo-4226883.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  background-size: cover;
+}
+
+/* NAVBAR PUSH OUT MENU */
+.navbar {
+  width: 100%;
+  height: 100%;
+  background-color: $black;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: right 0.8s cubic-bezier(1, 0.5, 0.5, 1);
+  /* border-radius: 40% 0 0 40%; */
+
+  /* NAVBAR LIST */
+  .nav-list {
+    text-align: right;
+  }
+
+  /* LIST ITEMS INSIDE THE NAVBAR */
+  .nav-item {
+    list-style: none;
+  }
+
+  #icon {
+    width: 40px;
+    cursor: pointer;
+    position: relative;
+    right: 6em;
+    top: 2em;
+  }
+
+  /* ACTUAL LINKS INSIDE NAVBAR */
+  .nav-link {
+    display: block;
+    text-align: center;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 40px;
+    color: $white;
+    font-weight: 100;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    padding: 3px 0;
+
+    /* MAKING LINE ANIMATION ON HOVER */
+    &::before,
+    &::after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      position: absolute;
+      left: 0;
+      transform: scaleX(0);
+      transition: 0.5s;
+    }
+    &::after {
+      bottom: 0;
+      transform-origin: left;
+    }
+    &::before {
+      top: 0;
+      transform-origin: right;
+    }
+    &:hover::before,
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* CHANGE VALUE TO SHOW AND HIDE THE NAVBAR! */
+.change {
+  right: 0;
+}
+
+/* HAMBURGER MENU CREATION */
+.hamburger-menu {
+  width: 35px;
+  height: 30px;
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/* CREATING LINES FOR HAMBURGER MENU */
+.line {
+  width: 100%;
+  height: 3px;
+  background-color: $white;
+  transition: all 0.8s;
+}
+
+/* TURNING THE LINE INTO AN "X" IN ACTIVE POSITION */
+.change .line-1 {
+  transform: rotateZ(-405deg) translate(-8px, 6px);
+}
+.change .line-2 {
+  opacity: 0;
+}
+.change .line-3 {
+  transform: rotateZ(405deg) translate(-8px, -6px);
+}
